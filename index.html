@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Page Assistant</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="card-container">
+        <canvas class="webgl"></canvas>
+        <div>
+          <p class="card-content">This is the initial content.</p>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button id="button1">Button 1</button>
+        <button id="button2">Button 2</button>
+        <button id="button3">Button 3</button>
+        <button id="button4">Button 4</button>
+        <button id="button5">Button 5</button>
+      </div>
+
+      <div class="overlay"></div>
+    </div>
+
+    <script>
+      const cardCont = document.querySelector(".card-container");
+      const cardContent = document.querySelector(".card-content");
+      const overlay = document.querySelector(".overlay");
+
+      const contentMap = {
+        button1: "HNG will crumble",
+        button2: "Thunder fire those mentors",
+        button3: "REALLLLLLLLL",
+        button4: "Stage 555",
+        button5: "God abegggggg",
+      };
+
+      // window.addEventListener("resize", () => {
+      //   height = window.innerHeight;
+      // });
+
+      document
+        .getElementById("button1")
+        .addEventListener("click", () => moveCard("button1"));
+      document
+        .getElementById("button2")
+        .addEventListener("click", () => moveCard("button2"));
+      document
+        .getElementById("button3")
+        .addEventListener("click", () => moveCard("button3"));
+      document
+        .getElementById("button4")
+        .addEventListener("click", () => moveCard("button4"));
+      document
+        .getElementById("button5")
+        .addEventListener("click", () => moveCard("button5"));
+
+      function moveCard(btnID) {
+        const exp = contentMap[btnID];
+        const rect = document.getElementById(btnID).getBoundingClientRect();
+
+        console.log(rect);
+
+        const height = window.innerHeight;
+        const width = window.innerWidth;
+
+        cardCont.style.transition = "0.3s ease";
+        cardCont.style.bottom = `${height - rect.bottom - 220}px`;
+        cardCont.style.left = `${rect.left - 100}px`;
+
+        cardCont.classList.add("active");
+
+        if (!overlay.classList.contains("active"))
+          overlay.classList.add("active");
+
+        if (cardCont.classList.contains("active")) {
+          cardContent.textContent = exp;
+        }
+      }
+
+      overlay.addEventListener("click", () => {
+        cardCont.style.bottom = "10px";
+        cardCont.style.left = "10px";
+        overlay.classList.remove("active");
+        cardContent.textContent = "This is the initial content.";
+      });
+    </script>
+  </body>
+</html>

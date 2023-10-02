@@ -10,9 +10,11 @@
   <body>
     <div id="app">
       <div class="card-container">
-        <canvas class="webgl"></canvas>
         <div>
-          <p class="card-content">This is the initial content.</p>
+          <img style="width: 150px; height: 150px" src="/9334180.jpg" alt="" />
+        </div>
+        <div>
+          <p class="card-content">Hello I'm an assistant</p>
         </div>
       </div>
 
@@ -33,11 +35,11 @@
       const overlay = document.querySelector(".overlay");
 
       const contentMap = {
-        button1: "HNG will crumble",
-        button2: "Thunder fire those mentors",
-        button3: "REALLLLLLLLL",
-        button4: "Stage 555",
-        button5: "God abegggggg",
+        button1: "This is the first button",
+        button2: "This is the second button",
+        button3: "This is the third button",
+        button4: "This is the fourth button",
+        button5: "This is the fifth button",
       };
 
       // window.addEventListener("resize", () => {
@@ -87,7 +89,7 @@
         cardCont.style.bottom = "10px";
         cardCont.style.left = "10px";
         overlay.classList.remove("active");
-        cardContent.textContent = "This is the initial content.";
+        cardContent.textContent = "Hello I'm an assistant";
       });
     </script>
   </body>
